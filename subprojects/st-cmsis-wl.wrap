@@ -1,0 +1,26 @@
+[wrap-file]
+directory = st-cmsis-wl_1.2.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-wl/archive/refs/tags/v1.2.0.tar.gz
+source_hash = 75c75cfb7c24207e435b5198f36dcafbcfb855838ee52efb9611a331a750d113
+source_filename = st-cmsis-wl_1.2.0.tar.gz
+patch_directory = st-cmsis-wl
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32wl54cc = st_cmsis_stm32wl54cc_dep
+st-cmsis-stm32wl54jc = st_cmsis_stm32wl54jc_dep
+st-cmsis-stm32wl55cc = st_cmsis_stm32wl55cc_dep
+st-cmsis-stm32wl55jc = st_cmsis_stm32wl55jc_dep
+st-cmsis-stm32wl5moc = st_cmsis_stm32wl5moc_dep
+st-cmsis-stm32wle4c8 = st_cmsis_stm32wle4c8_dep
+st-cmsis-stm32wle4cb = st_cmsis_stm32wle4cb_dep
+st-cmsis-stm32wle4cc = st_cmsis_stm32wle4cc_dep
+st-cmsis-stm32wle4j8 = st_cmsis_stm32wle4j8_dep
+st-cmsis-stm32wle4jb = st_cmsis_stm32wle4jb_dep
+st-cmsis-stm32wle4jc = st_cmsis_stm32wle4jc_dep
+st-cmsis-stm32wle5c8 = st_cmsis_stm32wle5c8_dep
+st-cmsis-stm32wle5cb = st_cmsis_stm32wle5cb_dep
+st-cmsis-stm32wle5cc = st_cmsis_stm32wle5cc_dep
+st-cmsis-stm32wle5j8 = st_cmsis_stm32wle5j8_dep
+st-cmsis-stm32wle5jb = st_cmsis_stm32wle5jb_dep
+st-cmsis-stm32wle5jc = st_cmsis_stm32wle5jc_dep

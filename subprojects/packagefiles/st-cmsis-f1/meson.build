@@ -1,0 +1,172 @@
+project('st-cmsis-f1', 'c', 'cpp',
+  license: 'Apache-2.0',
+  meson_version: '>=1.5.1',
+  version: '4.3.5',
+  default_options: ['default_library=static', 'b_staticpic=false'],
+)
+
+st_cmsis_core = dependency('st-cmsis-core', version: '5.9.0')
+root = 'cmsis-device-f1-4.3.5'
+
+# Per type dependencies with -D compiler flags and startup sources
+types = [
+  'stm32f100_b', 
+  'stm32f100_e', 
+  'stm32f101_6', 
+  'stm32f101_b', 
+  'stm32f101_e', 
+  'stm32f101_g', 
+  'stm32f102_6', 
+  'stm32f102_b', 
+  'stm32f103_6', 
+  'stm32f103_b', 
+  'stm32f103_e', 
+  'stm32f103_g', 
+  'stm32f105_c', 
+  'stm32f107_c', 
+]
+system_src = files(root / 'Source' / 'Templates' / 'system_stm32f1xx.c')
+foreach type : types
+  type_lower = type.replace('_', 'x')
+  startup_src = files(root / 'Source' / 'Templates' / 'gcc' / f'startup_@type_lower@.s')
+  type_define = '-D' + type.to_upper().replace('_', 'x')
+  pkg_define = '-DSTM32F1'  # This can be used with universal stm32 header 
+
+  lib = static_library(
+    f'st_cmsis_@type_lower@', system_src, startup_src,
+    build_by_default: false,
+    dependencies: [st_cmsis_core],
+    include_directories: root / 'Include',
+    c_args: type_define,
+    cpp_args: type_define,
+  )
+  set_variable(f'st_cmsis_@type_lower@_dep', declare_dependency(
+    version: meson.project_version(),
+    dependencies: [st_cmsis_core],
+    include_directories: root / 'Include',
+    compile_args: [type_define, pkg_define],
+    link_with: lib,
+  ))
+endforeach
+
+# Per MCU dependencies with default linker script
+mcus = {
+    'stm32f100c4': ['stm32f100_b', 16, 4],
+    'stm32f100c6': ['stm32f100_b', 32, 4],
+    'stm32f100c8': ['stm32f100_b', 64, 8],
+    'stm32f100cb': ['stm32f100_b', 128, 8],
+    'stm32f100r4': ['stm32f100_b', 16, 4],
+    'stm32f100r6': ['stm32f100_b', 32, 4],
+    'stm32f100r8': ['stm32f100_b', 64, 8],
+    'stm32f100rb': ['stm32f100_b', 128, 8],
+    'stm32f100rc': ['stm32f100_e', 256, 24],
+    'stm32f100rd': ['stm32f100_e', 384, 32],
+    'stm32f100re': ['stm32f100_e', 512, 32],
+    'stm32f100v8': ['stm32f100_b', 64, 8],
+    'stm32f100vb': ['stm32f100_b', 128, 8],
+    'stm32f100vc': ['stm32f100_e', 256, 24],
+    'stm32f100vd': ['stm32f100_e', 384, 32],
+    'stm32f100ve': ['stm32f100_e', 512, 32],
+    'stm32f100zc': ['stm32f100_e', 256, 24],
+    'stm32f100zd': ['stm32f100_e', 384, 32],
+    'stm32f100ze': ['stm32f100_e', 512, 32],
+    'stm32f101c4': ['stm32f101_6', 16, 4],
+    'stm32f101c6': ['stm32f101_6', 32, 6],
+    'stm32f101c8': ['stm32f101_b', 64, 10],
+    'stm32f101cb': ['stm32f101_b', 128, 16],
+    'stm32f101r4': ['stm32f101_6', 16, 4],
+    'stm32f101r6': ['stm32f101_6', 32, 6],
+    'stm32f101r8': ['stm32f101_b', 64, 10],
+    'stm32f101rb': ['stm32f101_b', 128, 16],
+    'stm32f101rc': ['stm32f101_e', 256, 32],
+    'stm32f101rd': ['stm32f101_e', 384, 48],
+    'stm32f101re': ['stm32f101_e', 512, 48],
+    'stm32f101rf': ['stm32f101_g', 768, 80],
+    'stm32f101rg': ['stm32f101_g', 1024, 80],
+    'stm32f101t4': ['stm32f101_6', 16, 4],
+    'stm32f101t6': ['stm32f101_6', 32, 6],
+    'stm32f101t8': ['stm32f101_b', 64, 10],
+    'stm32f101tb': ['stm32f101_b', 128, 16],
+    'stm32f101v8': ['stm32f101_b', 64, 10],
+    'stm32f101vb': ['stm32f101_b', 128, 16],
+    'stm32f101vc': ['stm32f101_e', 256, 32],
+    'stm32f101vd': ['stm32f101_e', 384, 48],
+    'stm32f101ve': ['stm32f101_e', 512, 48],
+    'stm32f101vf': ['stm32f101_g', 768, 80],
+    'stm32f101vg': ['stm32f101_g', 1024, 80],
+    'stm32f101zc': ['stm32f101_e', 256, 32],
+    'stm32f101zd': ['stm32f101_e', 384, 48],
+    'stm32f101ze': ['stm32f101_e', 512, 48],
+    'stm32f101zf': ['stm32f101_g', 768, 80],
+    'stm32f101zg': ['stm32f101_g', 1024, 80],
+    'stm32f102c4': ['stm32f102_6', 16, 4],
+    'stm32f102c6': ['stm32f102_6', 32, 6],
+    'stm32f102c8': ['stm32f102_b', 64, 10],
+    'stm32f102cb': ['stm32f102_b', 128, 16],
+    'stm32f102r4': ['stm32f102_6', 16, 4],
+    'stm32f102r6': ['stm32f102_6', 32, 6],
+    'stm32f102r8': ['stm32f102_b', 64, 10],
+    'stm32f102rb': ['stm32f102_b', 128, 16],
+    'stm32f103c4': ['stm32f103_6', 16, 6],
+    'stm32f103c6': ['stm32f103_6', 32, 10],
+    'stm32f103c8': ['stm32f103_b', 64, 20],
+    'stm32f103cb': ['stm32f103_b', 128, 20],
+    'stm32f103r4': ['stm32f103_6', 16, 6],
+    'stm32f103r6': ['stm32f103_6', 32, 10],
+    'stm32f103r8': ['stm32f103_b', 64, 20],
+    'stm32f103rb': ['stm32f103_b', 128, 20],
+    'stm32f103rc': ['stm32f103_e', 256, 48],
+    'stm32f103rd': ['stm32f103_e', 384, 64],
+    'stm32f103re': ['stm32f103_e', 512, 64],
+    'stm32f103rf': ['stm32f103_g', 768, 96],
+    'stm32f103rg': ['stm32f103_g', 1024, 96],
+    'stm32f103t4': ['stm32f103_6', 16, 6],
+    'stm32f103t6': ['stm32f103_6', 32, 10],
+    'stm32f103t8': ['stm32f103_b', 64, 20],
+    'stm32f103tb': ['stm32f103_b', 128, 20],
+    'stm32f103v8': ['stm32f103_b', 64, 20],
+    'stm32f103vb': ['stm32f103_b', 128, 20],
+    'stm32f103vc': ['stm32f103_e', 256, 48],
+    'stm32f103vd': ['stm32f103_e', 384, 64],
+    'stm32f103ve': ['stm32f103_e', 512, 64],
+    'stm32f103vf': ['stm32f103_g', 768, 96],
+    'stm32f103vg': ['stm32f103_g', 1024, 96],
+    'stm32f103zc': ['stm32f103_e', 256, 48],
+    'stm32f103zd': ['stm32f103_e', 384, 64],
+    'stm32f103ze': ['stm32f103_e', 512, 64],
+    'stm32f103zf': ['stm32f103_g', 768, 96],
+    'stm32f103zg': ['stm32f103_g', 1024, 96],
+    'stm32f105r8': ['stm32f105_c', 64, 64],
+    'stm32f105rb': ['stm32f105_c', 128, 64],
+    'stm32f105rc': ['stm32f105_c', 256, 64],
+    'stm32f105v8': ['stm32f105_c', 64, 64],
+    'stm32f105vb': ['stm32f105_c', 128, 64],
+    'stm32f105vc': ['stm32f105_c', 256, 64],
+    'stm32f107rb': ['stm32f107_c', 128, 64],
+    'stm32f107rc': ['stm32f107_c', 256, 64],
+    'stm32f107vb': ['stm32f107_c', 128, 64],
+    'stm32f107vc': ['stm32f107_c', 256, 64],
+}
+foreach mcu, opts : mcus
+  ld_default_script_name = f'@mcu@.ld'
+  configure_file(input : 'default.ld.in',
+    output : ld_default_script_name,
+    configuration : {
+      'flash_size_kb': opts[1],
+      'ram_size_kb': opts[2],
+  })
+  ld_default_script = ['-Xlinker', '--default-script=' + meson.project_build_root() / ld_default_script_name]
+
+  compile_args = []
+  if get_option('use_hal')
+    compile_args += '-DUSE_HAL_DRIVER'
+  endif
+
+  type_lower = opts[0].replace('_', 'x')
+  set_variable(f'st_cmsis_@mcu@_dep', declare_dependency(
+    version: meson.project_version(),
+    dependencies: get_variable(f'st_cmsis_@type_lower@_dep'),
+    compile_args: compile_args,
+    link_args: ld_default_script,
+  ))
+endforeach

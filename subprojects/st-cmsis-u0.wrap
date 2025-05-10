@@ -1,0 +1,41 @@
+[wrap-file]
+directory = st-cmsis-u0_1.2.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-u0/archive/refs/tags/v1.2.0.tar.gz
+source_hash = 9391c84c14b2956e82a06426f888dc34da9da8d1e0fe3e1c65df23489084a7f2
+source_filename = st-cmsis-u0_1.2.0.tar.gz
+patch_directory = st-cmsis-u0
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32u031c6 = st_cmsis_stm32u031c6_dep
+st-cmsis-stm32u031c8 = st_cmsis_stm32u031c8_dep
+st-cmsis-stm32u031f4 = st_cmsis_stm32u031f4_dep
+st-cmsis-stm32u031f6 = st_cmsis_stm32u031f6_dep
+st-cmsis-stm32u031f8 = st_cmsis_stm32u031f8_dep
+st-cmsis-stm32u031k4 = st_cmsis_stm32u031k4_dep
+st-cmsis-stm32u031k6 = st_cmsis_stm32u031k6_dep
+st-cmsis-stm32u031k8 = st_cmsis_stm32u031k8_dep
+st-cmsis-stm32u031r6 = st_cmsis_stm32u031r6_dep
+st-cmsis-stm32u031r8 = st_cmsis_stm32u031r8_dep
+st-cmsis-stm32u073c8 = st_cmsis_stm32u073c8_dep
+st-cmsis-stm32u073cb = st_cmsis_stm32u073cb_dep
+st-cmsis-stm32u073cc = st_cmsis_stm32u073cc_dep
+st-cmsis-stm32u073k8 = st_cmsis_stm32u073k8_dep
+st-cmsis-stm32u073kb = st_cmsis_stm32u073kb_dep
+st-cmsis-stm32u073kc = st_cmsis_stm32u073kc_dep
+st-cmsis-stm32u073m8 = st_cmsis_stm32u073m8_dep
+st-cmsis-stm32u073mb = st_cmsis_stm32u073mb_dep
+st-cmsis-stm32u073mc = st_cmsis_stm32u073mc_dep
+st-cmsis-stm32u073r8 = st_cmsis_stm32u073r8_dep
+st-cmsis-stm32u073rb = st_cmsis_stm32u073rb_dep
+st-cmsis-stm32u073rc = st_cmsis_stm32u073rc_dep
+st-cmsis-stm32u083cc = st_cmsis_stm32u083cc_dep
+st-cmsis-stm32u083kc = st_cmsis_stm32u083kc_dep
+st-cmsis-stm32u083mc = st_cmsis_stm32u083mc_dep
+st-cmsis-stm32u083rc = st_cmsis_stm32u083rc_dep
+st-cmsis-stm32u031g6 = st_cmsis_stm32u031g6_dep
+st-cmsis-stm32u031g8 = st_cmsis_stm32u031g8_dep
+st-cmsis-stm32u073h8 = st_cmsis_stm32u073h8_dep
+st-cmsis-stm32u073hb = st_cmsis_stm32u073hb_dep
+st-cmsis-stm32u073hc = st_cmsis_stm32u073hc_dep
+st-cmsis-stm32u083hc = st_cmsis_stm32u083hc_dep

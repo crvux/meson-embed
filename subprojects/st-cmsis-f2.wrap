@@ -1,0 +1,47 @@
+[wrap-file]
+directory = st-cmsis-f2_2.2.6
+source_url = https://github.com/STMicroelectronics/cmsis-device-f2/archive/refs/tags/v2.2.6.tar.gz
+source_hash = 3693bd5dd0aa1066e9543e0eb67b088fc439ab04a997e0660d046f8717ae9f4d
+source_filename = st-cmsis-f2_2.2.6.tar.gz
+patch_directory = st-cmsis-f2
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32f205rb = st_cmsis_stm32f205rb_dep
+st-cmsis-stm32f205rc = st_cmsis_stm32f205rc_dep
+st-cmsis-stm32f205re = st_cmsis_stm32f205re_dep
+st-cmsis-stm32f205rf = st_cmsis_stm32f205rf_dep
+st-cmsis-stm32f205rg = st_cmsis_stm32f205rg_dep
+st-cmsis-stm32f205vb = st_cmsis_stm32f205vb_dep
+st-cmsis-stm32f205vc = st_cmsis_stm32f205vc_dep
+st-cmsis-stm32f205ve = st_cmsis_stm32f205ve_dep
+st-cmsis-stm32f205vf = st_cmsis_stm32f205vf_dep
+st-cmsis-stm32f205vg = st_cmsis_stm32f205vg_dep
+st-cmsis-stm32f205zc = st_cmsis_stm32f205zc_dep
+st-cmsis-stm32f205ze = st_cmsis_stm32f205ze_dep
+st-cmsis-stm32f205zf = st_cmsis_stm32f205zf_dep
+st-cmsis-stm32f205zg = st_cmsis_stm32f205zg_dep
+st-cmsis-stm32f207ic = st_cmsis_stm32f207ic_dep
+st-cmsis-stm32f207ie = st_cmsis_stm32f207ie_dep
+st-cmsis-stm32f207if = st_cmsis_stm32f207if_dep
+st-cmsis-stm32f207ig = st_cmsis_stm32f207ig_dep
+st-cmsis-stm32f207vc = st_cmsis_stm32f207vc_dep
+st-cmsis-stm32f207ve = st_cmsis_stm32f207ve_dep
+st-cmsis-stm32f207vf = st_cmsis_stm32f207vf_dep
+st-cmsis-stm32f207vg = st_cmsis_stm32f207vg_dep
+st-cmsis-stm32f207zc = st_cmsis_stm32f207zc_dep
+st-cmsis-stm32f207ze = st_cmsis_stm32f207ze_dep
+st-cmsis-stm32f207zf = st_cmsis_stm32f207zf_dep
+st-cmsis-stm32f207zg = st_cmsis_stm32f207zg_dep
+st-cmsis-stm32f215re = st_cmsis_stm32f215re_dep
+st-cmsis-stm32f215rg = st_cmsis_stm32f215rg_dep
+st-cmsis-stm32f215ve = st_cmsis_stm32f215ve_dep
+st-cmsis-stm32f215vg = st_cmsis_stm32f215vg_dep
+st-cmsis-stm32f215ze = st_cmsis_stm32f215ze_dep
+st-cmsis-stm32f215zg = st_cmsis_stm32f215zg_dep
+st-cmsis-stm32f217ie = st_cmsis_stm32f217ie_dep
+st-cmsis-stm32f217ig = st_cmsis_stm32f217ig_dep
+st-cmsis-stm32f217ve = st_cmsis_stm32f217ve_dep
+st-cmsis-stm32f217vg = st_cmsis_stm32f217vg_dep
+st-cmsis-stm32f217ze = st_cmsis_stm32f217ze_dep
+st-cmsis-stm32f217zg = st_cmsis_stm32f217zg_dep

@@ -1,0 +1,12 @@
+[wrap-file]
+directory = st-cmsis-{{ name }}_{{ version }}
+source_url = {{ tarball_url }}
+source_hash = {{ tarball_sha256 }}
+source_filename = st-cmsis-{{ name }}_{{ version }}.tar.gz
+patch_directory = st-cmsis-{{ name }}
+lead_directory_missing = true
+
+[provide]
+{% for spec in mcu_specs %}
+st-cmsis-{{ spec[0] }} = st_cmsis_{{ spec[0] }}_dep
+{% endfor %}

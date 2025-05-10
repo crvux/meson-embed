@@ -1,0 +1,19 @@
+[wrap-file]
+directory = st-cmsis-wb0_1.2.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-wb0/archive/refs/tags/v1.2.0.tar.gz
+source_hash = cb6ec037f6b8e5e32cb2167d0d2b44510de99005f4c3aa656d2608df0883cdba
+source_filename = st-cmsis-wb0_1.2.0.tar.gz
+patch_directory = st-cmsis-wb0
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32wb05kn = st_cmsis_stm32wb05kn_dep
+st-cmsis-stm32wb05kz = st_cmsis_stm32wb05kz_dep
+st-cmsis-stm32wb05tn = st_cmsis_stm32wb05tn_dep
+st-cmsis-stm32wb05tz = st_cmsis_stm32wb05tz_dep
+st-cmsis-stm32wb06cc = st_cmsis_stm32wb06cc_dep
+st-cmsis-stm32wb06kc = st_cmsis_stm32wb06kc_dep
+st-cmsis-stm32wb07cc = st_cmsis_stm32wb07cc_dep
+st-cmsis-stm32wb07kc = st_cmsis_stm32wb07kc_dep
+st-cmsis-stm32wb09ke = st_cmsis_stm32wb09ke_dep
+st-cmsis-stm32wb09te = st_cmsis_stm32wb09te_dep

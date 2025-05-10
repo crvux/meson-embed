@@ -1,0 +1,15 @@
+[wrap-file]
+directory = st-cmsis-wl3_1.1.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-wl3/archive/refs/tags/v1.1.0.tar.gz
+source_hash = 556767c14bf5a7b3ab7f3b7e1be20cde78c104ee160f8ab132cd7f5c5687f50f
+source_filename = st-cmsis-wl3_1.1.0.tar.gz
+patch_directory = st-cmsis-wl3
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32wl33c8 = st_cmsis_stm32wl33c8_dep
+st-cmsis-stm32wl33cb = st_cmsis_stm32wl33cb_dep
+st-cmsis-stm32wl33cc = st_cmsis_stm32wl33cc_dep
+st-cmsis-stm32wl33k8 = st_cmsis_stm32wl33k8_dep
+st-cmsis-stm32wl33kb = st_cmsis_stm32wl33kb_dep
+st-cmsis-stm32wl33kc = st_cmsis_stm32wl33kc_dep

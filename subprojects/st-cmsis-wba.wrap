@@ -1,0 +1,41 @@
+[wrap-file]
+directory = st-cmsis-wba_1.6.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-wba/archive/refs/tags/v1.6.0.tar.gz
+source_hash = 05bdd6d8fca69f2fc53bb9ca4e0397721b2119113d86e6d46bcbf229962743c4
+source_filename = st-cmsis-wba_1.6.0.tar.gz
+patch_directory = st-cmsis-wba
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32wba50kg = st_cmsis_stm32wba50kg_dep
+st-cmsis-stm32wba52ce = st_cmsis_stm32wba52ce_dep
+st-cmsis-stm32wba52cg = st_cmsis_stm32wba52cg_dep
+st-cmsis-stm32wba52ke = st_cmsis_stm32wba52ke_dep
+st-cmsis-stm32wba52kg = st_cmsis_stm32wba52kg_dep
+st-cmsis-stm32wba54ce = st_cmsis_stm32wba54ce_dep
+st-cmsis-stm32wba54cg = st_cmsis_stm32wba54cg_dep
+st-cmsis-stm32wba54ke = st_cmsis_stm32wba54ke_dep
+st-cmsis-stm32wba54kg = st_cmsis_stm32wba54kg_dep
+st-cmsis-stm32wba55ce = st_cmsis_stm32wba55ce_dep
+st-cmsis-stm32wba55cg = st_cmsis_stm32wba55cg_dep
+st-cmsis-stm32wba55hg = st_cmsis_stm32wba55hg_dep
+st-cmsis-stm32wba55ue = st_cmsis_stm32wba55ue_dep
+st-cmsis-stm32wba55ug = st_cmsis_stm32wba55ug_dep
+st-cmsis-stm32wba62cg = st_cmsis_stm32wba62cg_dep
+st-cmsis-stm32wba62ci = st_cmsis_stm32wba62ci_dep
+st-cmsis-stm32wba62mg = st_cmsis_stm32wba62mg_dep
+st-cmsis-stm32wba62mi = st_cmsis_stm32wba62mi_dep
+st-cmsis-stm32wba62pg = st_cmsis_stm32wba62pg_dep
+st-cmsis-stm32wba62pi = st_cmsis_stm32wba62pi_dep
+st-cmsis-stm32wba63cg = st_cmsis_stm32wba63cg_dep
+st-cmsis-stm32wba63ci = st_cmsis_stm32wba63ci_dep
+st-cmsis-stm32wba64cg = st_cmsis_stm32wba64cg_dep
+st-cmsis-stm32wba64ci = st_cmsis_stm32wba64ci_dep
+st-cmsis-stm32wba65cg = st_cmsis_stm32wba65cg_dep
+st-cmsis-stm32wba65ci = st_cmsis_stm32wba65ci_dep
+st-cmsis-stm32wba65mg = st_cmsis_stm32wba65mg_dep
+st-cmsis-stm32wba65mi = st_cmsis_stm32wba65mi_dep
+st-cmsis-stm32wba65pg = st_cmsis_stm32wba65pg_dep
+st-cmsis-stm32wba65pi = st_cmsis_stm32wba65pi_dep
+st-cmsis-stm32wba65rg = st_cmsis_stm32wba65rg_dep
+st-cmsis-stm32wba65ri = st_cmsis_stm32wba65ri_dep

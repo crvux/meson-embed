@@ -1,0 +1,27 @@
+[wrap-file]
+directory = st-cmsis-wb_1.12.2
+source_url = https://github.com/STMicroelectronics/cmsis-device-wb/archive/refs/tags/v1.12.2.tar.gz
+source_hash = 7577fae3f1764381a4c4b3c8d8433cb462a7ac65c008d2abe48466579d48db94
+source_filename = st-cmsis-wb_1.12.2.tar.gz
+patch_directory = st-cmsis-wb
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32wb10cc = st_cmsis_stm32wb10cc_dep
+st-cmsis-stm32wb15cc = st_cmsis_stm32wb15cc_dep
+st-cmsis-stm32wb1mmc = st_cmsis_stm32wb1mmc_dep
+st-cmsis-stm32wb30ce = st_cmsis_stm32wb30ce_dep
+st-cmsis-stm32wb35cc = st_cmsis_stm32wb35cc_dep
+st-cmsis-stm32wb35ce = st_cmsis_stm32wb35ce_dep
+st-cmsis-stm32wb50cg = st_cmsis_stm32wb50cg_dep
+st-cmsis-stm32wb55cc = st_cmsis_stm32wb55cc_dep
+st-cmsis-stm32wb55ce = st_cmsis_stm32wb55ce_dep
+st-cmsis-stm32wb55cg = st_cmsis_stm32wb55cg_dep
+st-cmsis-stm32wb55rc = st_cmsis_stm32wb55rc_dep
+st-cmsis-stm32wb55re = st_cmsis_stm32wb55re_dep
+st-cmsis-stm32wb55rg = st_cmsis_stm32wb55rg_dep
+st-cmsis-stm32wb55vc = st_cmsis_stm32wb55vc_dep
+st-cmsis-stm32wb55ve = st_cmsis_stm32wb55ve_dep
+st-cmsis-stm32wb55vg = st_cmsis_stm32wb55vg_dep
+st-cmsis-stm32wb55vy = st_cmsis_stm32wb55vy_dep
+st-cmsis-stm32wb5mmg = st_cmsis_stm32wb5mmg_dep

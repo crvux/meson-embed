@@ -1,0 +1,21 @@
+[wrap-file]
+directory = st-cmsis-u3_1.1.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-u3/archive/refs/tags/v1.1.0.tar.gz
+source_hash = 4cb43e6fcc57b1db3643ec28bbfd55c632b1d0d774707bab4fb0cefc14a8844a
+source_filename = st-cmsis-u3_1.1.0.tar.gz
+patch_directory = st-cmsis-u3
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32u375ce = st_cmsis_stm32u375ce_dep
+st-cmsis-stm32u375cg = st_cmsis_stm32u375cg_dep
+st-cmsis-stm32u375ke = st_cmsis_stm32u375ke_dep
+st-cmsis-stm32u375kg = st_cmsis_stm32u375kg_dep
+st-cmsis-stm32u375re = st_cmsis_stm32u375re_dep
+st-cmsis-stm32u375rg = st_cmsis_stm32u375rg_dep
+st-cmsis-stm32u375ve = st_cmsis_stm32u375ve_dep
+st-cmsis-stm32u375vg = st_cmsis_stm32u375vg_dep
+st-cmsis-stm32u385cg = st_cmsis_stm32u385cg_dep
+st-cmsis-stm32u385kg = st_cmsis_stm32u385kg_dep
+st-cmsis-stm32u385rg = st_cmsis_stm32u385rg_dep
+st-cmsis-stm32u385vg = st_cmsis_stm32u385vg_dep

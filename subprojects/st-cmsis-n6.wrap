@@ -1,0 +1,33 @@
+[wrap-file]
+directory = st-cmsis-n6_1.1.0
+source_url = https://github.com/STMicroelectronics/cmsis-device-n6/archive/refs/tags/v1.1.0.tar.gz
+source_hash = 91b0fbd7400433965acaca92e5d023ab8231a313e174d857369d822fa078a391
+source_filename = st-cmsis-n6_1.1.0.tar.gz
+patch_directory = st-cmsis-n6
+lead_directory_missing = true
+
+[provide]
+st-cmsis-stm32n645a0 = st_cmsis_stm32n645a0_dep
+st-cmsis-stm32n645b0 = st_cmsis_stm32n645b0_dep
+st-cmsis-stm32n645i0 = st_cmsis_stm32n645i0_dep
+st-cmsis-stm32n645l0 = st_cmsis_stm32n645l0_dep
+st-cmsis-stm32n645x0 = st_cmsis_stm32n645x0_dep
+st-cmsis-stm32n645z0 = st_cmsis_stm32n645z0_dep
+st-cmsis-stm32n647a0 = st_cmsis_stm32n647a0_dep
+st-cmsis-stm32n647b0 = st_cmsis_stm32n647b0_dep
+st-cmsis-stm32n647i0 = st_cmsis_stm32n647i0_dep
+st-cmsis-stm32n647l0 = st_cmsis_stm32n647l0_dep
+st-cmsis-stm32n647x0 = st_cmsis_stm32n647x0_dep
+st-cmsis-stm32n647z0 = st_cmsis_stm32n647z0_dep
+st-cmsis-stm32n655a0 = st_cmsis_stm32n655a0_dep
+st-cmsis-stm32n655b0 = st_cmsis_stm32n655b0_dep
+st-cmsis-stm32n655i0 = st_cmsis_stm32n655i0_dep
+st-cmsis-stm32n655l0 = st_cmsis_stm32n655l0_dep
+st-cmsis-stm32n655x0 = st_cmsis_stm32n655x0_dep
+st-cmsis-stm32n655z0 = st_cmsis_stm32n655z0_dep
+st-cmsis-stm32n657a0 = st_cmsis_stm32n657a0_dep
+st-cmsis-stm32n657b0 = st_cmsis_stm32n657b0_dep
+st-cmsis-stm32n657i0 = st_cmsis_stm32n657i0_dep
+st-cmsis-stm32n657l0 = st_cmsis_stm32n657l0_dep
+st-cmsis-stm32n657x0 = st_cmsis_stm32n657x0_dep
+st-cmsis-stm32n657z0 = st_cmsis_stm32n657z0_dep
