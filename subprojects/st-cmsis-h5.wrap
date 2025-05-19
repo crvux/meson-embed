@@ -7,6 +7,14 @@ patch_directory = st-cmsis-h5
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32h503__ = st_cmsis_stm32h503___dep
+st-cmsis-stm32h523__ = st_cmsis_stm32h523___dep
+st-cmsis-stm32h533__ = st_cmsis_stm32h533___dep
+st-cmsis-stm32h562__ = st_cmsis_stm32h562___dep
+st-cmsis-stm32h563__ = st_cmsis_stm32h563___dep
+st-cmsis-stm32h573__ = st_cmsis_stm32h573___dep
+# mcu type library + linker script
 st-cmsis-stm32h503cb = st_cmsis_stm32h503cb_dep
 st-cmsis-stm32h503eb = st_cmsis_stm32h503eb_dep
 st-cmsis-stm32h503kb = st_cmsis_stm32h503kb_dep

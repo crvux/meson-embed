@@ -7,6 +7,21 @@ patch_directory = st-cmsis-g4
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32g411_b = st_cmsis_stm32g411_b_dep
+st-cmsis-stm32g411_c = st_cmsis_stm32g411_c_dep
+st-cmsis-stm32g414__ = st_cmsis_stm32g414___dep
+st-cmsis-stm32g431__ = st_cmsis_stm32g431___dep
+st-cmsis-stm32g441__ = st_cmsis_stm32g441___dep
+st-cmsis-stm32g471__ = st_cmsis_stm32g471___dep
+st-cmsis-stm32g473__ = st_cmsis_stm32g473___dep
+st-cmsis-stm32g474__ = st_cmsis_stm32g474___dep
+st-cmsis-stm32g483__ = st_cmsis_stm32g483___dep
+st-cmsis-stm32g484__ = st_cmsis_stm32g484___dep
+st-cmsis-stm32g491__ = st_cmsis_stm32g491___dep
+st-cmsis-stm32g4a1__ = st_cmsis_stm32g4a1___dep
+st-cmsis-stm32gbk1cb = st_cmsis_stm32gbk1cb_dep
+# mcu type library + linker script
 st-cmsis-stm32g431c6 = st_cmsis_stm32g431c6_dep
 st-cmsis-stm32g431c8 = st_cmsis_stm32g431c8_dep
 st-cmsis-stm32g431cb = st_cmsis_stm32g431cb_dep

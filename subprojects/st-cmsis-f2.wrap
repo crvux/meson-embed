@@ -7,6 +7,12 @@ patch_directory = st-cmsis-f2
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32f205__ = st_cmsis_stm32f205___dep
+st-cmsis-stm32f207__ = st_cmsis_stm32f207___dep
+st-cmsis-stm32f215__ = st_cmsis_stm32f215___dep
+st-cmsis-stm32f217__ = st_cmsis_stm32f217___dep
+# mcu type library + linker script
 st-cmsis-stm32f205rb = st_cmsis_stm32f205rb_dep
 st-cmsis-stm32f205rc = st_cmsis_stm32f205rc_dep
 st-cmsis-stm32f205re = st_cmsis_stm32f205re_dep

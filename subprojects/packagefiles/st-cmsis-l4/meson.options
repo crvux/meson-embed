@@ -1,3 +1,0 @@
-option('use_hal', type: 'boolean', value: false, 
-  description: 'This option must be set to "true" if cmsis will be used with st-hal library'
-)

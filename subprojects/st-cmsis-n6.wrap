@@ -7,6 +7,12 @@ patch_directory = st-cmsis-n6
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32n645__ = st_cmsis_stm32n645___dep
+st-cmsis-stm32n647__ = st_cmsis_stm32n647___dep
+st-cmsis-stm32n655__ = st_cmsis_stm32n655___dep
+st-cmsis-stm32n657__ = st_cmsis_stm32n657___dep
+# mcu type library + linker script
 st-cmsis-stm32n645a0 = st_cmsis_stm32n645a0_dep
 st-cmsis-stm32n645b0 = st_cmsis_stm32n645b0_dep
 st-cmsis-stm32n645i0 = st_cmsis_stm32n645i0_dep

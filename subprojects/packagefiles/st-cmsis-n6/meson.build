@@ -10,10 +10,10 @@ root = 'cmsis-device-n6-1.1.0'
 
 # Per type dependencies with -D compiler flags and startup sources
 types = [
-  'stm32n657__', 
-  'stm32n655__', 
-  'stm32n647__', 
   'stm32n645__', 
+  'stm32n647__', 
+  'stm32n655__', 
+  'stm32n657__', 
 ]
 system_src = files(root / 'Source' / 'Templates' / 'system_stm32n6xx.c')
 foreach type : types
@@ -30,7 +30,7 @@ foreach type : types
     c_args: type_define,
     cpp_args: type_define,
   )
-  set_variable(f'st_cmsis_@type_lower@_dep', declare_dependency(
+  set_variable(f'st_cmsis_@type@_dep', declare_dependency(
     version: meson.project_version(),
     dependencies: [st_cmsis_core],
     include_directories: root / 'Include',
@@ -41,51 +41,35 @@ endforeach
 
 # Per MCU dependencies with default linker script
 mcus = {
-    'stm32n645a0': ['stm32n645__', 0, 4200],
-    'stm32n645b0': ['stm32n645__', 0, 4200],
-    'stm32n645i0': ['stm32n645__', 0, 4200],
-    'stm32n645l0': ['stm32n645__', 0, 4200],
-    'stm32n645x0': ['stm32n645__', 0, 4200],
-    'stm32n645z0': ['stm32n645__', 0, 4200],
-    'stm32n647a0': ['stm32n647__', 0, 4200],
-    'stm32n647b0': ['stm32n647__', 0, 4200],
-    'stm32n647i0': ['stm32n647__', 0, 4200],
-    'stm32n647l0': ['stm32n647__', 0, 4200],
-    'stm32n647x0': ['stm32n647__', 0, 4200],
-    'stm32n647z0': ['stm32n647__', 0, 4200],
-    'stm32n655a0': ['stm32n655__', 0, 4200],
-    'stm32n655b0': ['stm32n655__', 0, 4200],
-    'stm32n655i0': ['stm32n655__', 0, 4200],
-    'stm32n655l0': ['stm32n655__', 0, 4200],
-    'stm32n655x0': ['stm32n655__', 0, 4200],
-    'stm32n655z0': ['stm32n655__', 0, 4200],
-    'stm32n657a0': ['stm32n657__', 0, 4200],
-    'stm32n657b0': ['stm32n657__', 0, 4200],
-    'stm32n657i0': ['stm32n657__', 0, 4200],
-    'stm32n657l0': ['stm32n657__', 0, 4200],
-    'stm32n657x0': ['stm32n657__', 0, 4200],
-    'stm32n657z0': ['stm32n657__', 0, 4200],
+    'stm32n645a0': 'stm32n645__',
+    'stm32n645b0': 'stm32n645__',
+    'stm32n645i0': 'stm32n645__',
+    'stm32n645l0': 'stm32n645__',
+    'stm32n645x0': 'stm32n645__',
+    'stm32n645z0': 'stm32n645__',
+    'stm32n647a0': 'stm32n647__',
+    'stm32n647b0': 'stm32n647__',
+    'stm32n647i0': 'stm32n647__',
+    'stm32n647l0': 'stm32n647__',
+    'stm32n647x0': 'stm32n647__',
+    'stm32n647z0': 'stm32n647__',
+    'stm32n655a0': 'stm32n655__',
+    'stm32n655b0': 'stm32n655__',
+    'stm32n655i0': 'stm32n655__',
+    'stm32n655l0': 'stm32n655__',
+    'stm32n655x0': 'stm32n655__',
+    'stm32n655z0': 'stm32n655__',
+    'stm32n657a0': 'stm32n657__',
+    'stm32n657b0': 'stm32n657__',
+    'stm32n657i0': 'stm32n657__',
+    'stm32n657l0': 'stm32n657__',
+    'stm32n657x0': 'stm32n657__',
+    'stm32n657z0': 'stm32n657__',
 }
-foreach mcu, opts : mcus
-  ld_default_script_name = f'@mcu@.ld'
-  configure_file(input : 'default.ld.in',
-    output : ld_default_script_name,
-    configuration : {
-      'flash_size_kb': opts[1],
-      'ram_size_kb': opts[2],
-  })
-  ld_default_script = ['-Xlinker', '--default-script=' + meson.project_build_root() / ld_default_script_name]
-
-  compile_args = []
-  if get_option('use_hal')
-    compile_args += '-DUSE_HAL_DRIVER'
-  endif
-
-  type_lower = opts[0].replace('_', 'x')
+foreach mcu, type : mcus
   set_variable(f'st_cmsis_@mcu@_dep', declare_dependency(
     version: meson.project_version(),
-    dependencies: get_variable(f'st_cmsis_@type_lower@_dep'),
-    compile_args: compile_args,
-    link_args: ld_default_script,
+    dependencies: get_variable(f'st_cmsis_@type@_dep'),
+    link_args: ['-Xlinker', '--default-script=' + files('ld' / mcu + '.ld')[0].full_path()],
   ))
 endforeach

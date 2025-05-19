@@ -7,6 +7,11 @@ patch_directory = st-cmsis-{{ name }}
 lead_directory_missing = true
 
 [provide]
-{% for spec in mcu_specs %}
+# startup code + mcu type definition
+{% for type in mcu_types|sort() %}
+st-cmsis-{{ type }} = st_cmsis_{{ type }}_dep
+{% endfor %}
+# mcu type library + linker script
+{% for spec in mcu_specs|sort() %}
 st-cmsis-{{ spec[0] }} = st_cmsis_{{ spec[0] }}_dep
 {% endfor %}

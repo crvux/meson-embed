@@ -7,6 +7,10 @@ patch_directory = st-cmsis-l5
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32l552__ = st_cmsis_stm32l552___dep
+st-cmsis-stm32l562__ = st_cmsis_stm32l562___dep
+# mcu type library + linker script
 st-cmsis-stm32l552cc = st_cmsis_stm32l552cc_dep
 st-cmsis-stm32l552ce = st_cmsis_stm32l552ce_dep
 st-cmsis-stm32l552me = st_cmsis_stm32l552me_dep

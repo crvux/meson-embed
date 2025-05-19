@@ -7,6 +7,10 @@ patch_directory = st-cmsis-u3
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32u375__ = st_cmsis_stm32u375___dep
+st-cmsis-stm32u385__ = st_cmsis_stm32u385___dep
+# mcu type library + linker script
 st-cmsis-stm32u375ce = st_cmsis_stm32u375ce_dep
 st-cmsis-stm32u375cg = st_cmsis_stm32u375cg_dep
 st-cmsis-stm32u375ke = st_cmsis_stm32u375ke_dep

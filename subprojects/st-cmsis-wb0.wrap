@@ -7,6 +7,13 @@ patch_directory = st-cmsis-wb0
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32wb05 = st_cmsis_stm32wb05_dep
+st-cmsis-stm32wb06 = st_cmsis_stm32wb06_dep
+st-cmsis-stm32wb07 = st_cmsis_stm32wb07_dep
+st-cmsis-stm32wb09 = st_cmsis_stm32wb09_dep
+st-cmsis-stm32wb0_ = st_cmsis_stm32wb0__dep
+# mcu type library + linker script
 st-cmsis-stm32wb05kn = st_cmsis_stm32wb05kn_dep
 st-cmsis-stm32wb05kz = st_cmsis_stm32wb05kz_dep
 st-cmsis-stm32wb05tn = st_cmsis_stm32wb05tn_dep

@@ -7,6 +7,33 @@ patch_directory = st-cmsis-l4
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32l412__ = st_cmsis_stm32l412___dep
+st-cmsis-stm32l422__ = st_cmsis_stm32l422___dep
+st-cmsis-stm32l431__ = st_cmsis_stm32l431___dep
+st-cmsis-stm32l432__ = st_cmsis_stm32l432___dep
+st-cmsis-stm32l433__ = st_cmsis_stm32l433___dep
+st-cmsis-stm32l442__ = st_cmsis_stm32l442___dep
+st-cmsis-stm32l443__ = st_cmsis_stm32l443___dep
+st-cmsis-stm32l451__ = st_cmsis_stm32l451___dep
+st-cmsis-stm32l452__ = st_cmsis_stm32l452___dep
+st-cmsis-stm32l462__ = st_cmsis_stm32l462___dep
+st-cmsis-stm32l471__ = st_cmsis_stm32l471___dep
+st-cmsis-stm32l475__ = st_cmsis_stm32l475___dep
+st-cmsis-stm32l476__ = st_cmsis_stm32l476___dep
+st-cmsis-stm32l485__ = st_cmsis_stm32l485___dep
+st-cmsis-stm32l486__ = st_cmsis_stm32l486___dep
+st-cmsis-stm32l496__ = st_cmsis_stm32l496___dep
+st-cmsis-stm32l4a6__ = st_cmsis_stm32l4a6___dep
+st-cmsis-stm32l4p5__ = st_cmsis_stm32l4p5___dep
+st-cmsis-stm32l4q5__ = st_cmsis_stm32l4q5___dep
+st-cmsis-stm32l4r5__ = st_cmsis_stm32l4r5___dep
+st-cmsis-stm32l4r7__ = st_cmsis_stm32l4r7___dep
+st-cmsis-stm32l4r9__ = st_cmsis_stm32l4r9___dep
+st-cmsis-stm32l4s5__ = st_cmsis_stm32l4s5___dep
+st-cmsis-stm32l4s7__ = st_cmsis_stm32l4s7___dep
+st-cmsis-stm32l4s9__ = st_cmsis_stm32l4s9___dep
+# mcu type library + linker script
 st-cmsis-stm32l412c8 = st_cmsis_stm32l412c8_dep
 st-cmsis-stm32l412cb = st_cmsis_stm32l412cb_dep
 st-cmsis-stm32l412k8 = st_cmsis_stm32l412k8_dep

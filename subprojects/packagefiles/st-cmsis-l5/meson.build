@@ -28,7 +28,7 @@ foreach type : types
     c_args: type_define,
     cpp_args: type_define,
   )
-  set_variable(f'st_cmsis_@type_lower@_dep', declare_dependency(
+  set_variable(f'st_cmsis_@type@_dep', declare_dependency(
     version: meson.project_version(),
     dependencies: [st_cmsis_core],
     include_directories: root / 'Include',
@@ -39,44 +39,28 @@ endforeach
 
 # Per MCU dependencies with default linker script
 mcus = {
-    'stm32l552cc': ['stm32l552__', 256, 256],
-    'stm32l552ce': ['stm32l552__', 512, 256],
-    'stm32l552me': ['stm32l552__', 512, 256],
-    'stm32l552qc': ['stm32l552__', 256, 256],
-    'stm32l552qe': ['stm32l552__', 512, 256],
-    'stm32l552rc': ['stm32l552__', 256, 256],
-    'stm32l552re': ['stm32l552__', 512, 256],
-    'stm32l552vc': ['stm32l552__', 256, 256],
-    'stm32l552ve': ['stm32l552__', 512, 256],
-    'stm32l552zc': ['stm32l552__', 256, 256],
-    'stm32l552ze': ['stm32l552__', 512, 256],
-    'stm32l562ce': ['stm32l562__', 512, 256],
-    'stm32l562me': ['stm32l562__', 512, 256],
-    'stm32l562qe': ['stm32l562__', 512, 256],
-    'stm32l562re': ['stm32l562__', 512, 256],
-    'stm32l562ve': ['stm32l562__', 512, 256],
-    'stm32l562ze': ['stm32l562__', 512, 256],
+    'stm32l552cc': 'stm32l552__',
+    'stm32l552ce': 'stm32l552__',
+    'stm32l552me': 'stm32l552__',
+    'stm32l552qc': 'stm32l552__',
+    'stm32l552qe': 'stm32l552__',
+    'stm32l552rc': 'stm32l552__',
+    'stm32l552re': 'stm32l552__',
+    'stm32l552vc': 'stm32l552__',
+    'stm32l552ve': 'stm32l552__',
+    'stm32l552zc': 'stm32l552__',
+    'stm32l552ze': 'stm32l552__',
+    'stm32l562ce': 'stm32l562__',
+    'stm32l562me': 'stm32l562__',
+    'stm32l562qe': 'stm32l562__',
+    'stm32l562re': 'stm32l562__',
+    'stm32l562ve': 'stm32l562__',
+    'stm32l562ze': 'stm32l562__',
 }
-foreach mcu, opts : mcus
-  ld_default_script_name = f'@mcu@.ld'
-  configure_file(input : 'default.ld.in',
-    output : ld_default_script_name,
-    configuration : {
-      'flash_size_kb': opts[1],
-      'ram_size_kb': opts[2],
-  })
-  ld_default_script = ['-Xlinker', '--default-script=' + meson.project_build_root() / ld_default_script_name]
-
-  compile_args = []
-  if get_option('use_hal')
-    compile_args += '-DUSE_HAL_DRIVER'
-  endif
-
-  type_lower = opts[0].replace('_', 'x')
+foreach mcu, type : mcus
   set_variable(f'st_cmsis_@mcu@_dep', declare_dependency(
     version: meson.project_version(),
-    dependencies: get_variable(f'st_cmsis_@type_lower@_dep'),
-    compile_args: compile_args,
-    link_args: ld_default_script,
+    dependencies: get_variable(f'st_cmsis_@type@_dep'),
+    link_args: ['-Xlinker', '--default-script=' + files('ld' / mcu + '.ld')[0].full_path()],
   ))
 endforeach

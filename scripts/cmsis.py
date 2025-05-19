@@ -11,6 +11,7 @@ from pathlib import Path
 from packaging.version import Version
 import typing as t
 from jinja2 import Environment, FileSystemLoader
+import re
 
 CORES = {'cortex-m0', 'cortex-m0plus', 'cortex-m33', 'cortex-m3', 'cortex-m4', 'cortex-m7', 'cortex-m55'}
 
@@ -42,11 +43,11 @@ class PkgInfo:
         self.system_options = None
         self.mcu_specs = []
         self.out_path = None
-        self.patch_dir = None  
-    
+        self.patch_dir = None
+
     def set_out_path(self, out_path):
         self.out_path = out_path
-        self.patch_dir = out_path + f'/packagefiles/st-cmsis-{self.name}'  
+        self.patch_dir = out_path + f'/packagefiles/st-cmsis-{self.name}'
 
     def set_mcu_types(self, tarball_content, tb):
         self.mcu_types = []
@@ -95,8 +96,12 @@ class PkgInfo:
             f.write(temp.render(asdict(self)))
 
     def create_ld(self, temp):
-        with open(self.patch_dir + '/default.ld.in', 'w') as f:
-            f.write(temp.render(asdict(self)))
+        ld_dir = Path(self.patch_dir) / 'ld'
+        ld_dir.mkdir(parents=True, exist_ok=True)
+        for spec in self.mcu_specs:
+            mcu, flash_kb, ram_kb, ccmram_kb = spec[0], spec[2], spec[3], spec[4]
+            with open(ld_dir / f'{mcu}.ld', 'w') as f:
+                f.write(temp.render({'mcu': mcu, 'flash_kb': flash_kb, 'ram_kb': ram_kb, 'ccmram_kb': ccmram_kb}))
 
 PACKAGES = [
     PkgInfo('c0', '1.3.0'),
@@ -174,7 +179,7 @@ def latest_tag(tags):
     for tag in tags:
         if Version(latest_tag['name']) < Version(tag['name']):
             latest_tag = tag
-    return latest_tag 
+    return latest_tag
 
 def get_tarball(url):
     return requests.get(url).content
@@ -355,37 +360,37 @@ MANUAL_TYPES = {
     'stm32f103c4': 'stm32f103_6',
     'stm32f103c8': 'stm32f103_b',
     'stm32f103r4': 'stm32f103_6',
-    'stm32f103r8': 'stm32f103_b', 
-    'stm32f103rc': 'stm32f103_e', 
+    'stm32f103r8': 'stm32f103_b',
+    'stm32f103rc': 'stm32f103_e',
     'stm32f103rd': 'stm32f103_e',
     'stm32f103rf': 'stm32f103_g',
     'stm32f103t4': 'stm32f103_6',
     'stm32f103t8': 'stm32f103_b',
     'stm32f103v8': 'stm32f103_b',
-    'stm32f103vc': 'stm32f103_e', 
+    'stm32f103vc': 'stm32f103_e',
     'stm32f103vd': 'stm32f103_e',
-    'stm32f103vf': 'stm32f103_g', 
+    'stm32f103vf': 'stm32f103_g',
     'stm32f103zc': 'stm32f103_e',
-    'stm32f103zd': 'stm32f103_e', 
-    'stm32f103zf': 'stm32f103_g', 
+    'stm32f103zd': 'stm32f103_e',
+    'stm32f103zf': 'stm32f103_g',
     'stm32f302c6': 'stm32f302_8',
     'stm32f302cb': 'stm32f302_c',
     'stm32f302k6': 'stm32f302_8',
     'stm32f302r6': 'stm32f302_8',
-    'stm32f302rb': 'stm32f302_c', 
+    'stm32f302rb': 'stm32f302_c',
     'stm32f302rd': 'stm32f302_e',
-    'stm32f302vb': 'stm32f302_c', 
+    'stm32f302vb': 'stm32f302_c',
     'stm32f302vd': 'stm32f302_e',
-    'stm32f302zd': 'stm32f302_e', 
+    'stm32f302zd': 'stm32f302_e',
     'stm32f303c6': 'stm32f303_8',
     'stm32f303cb': 'stm32f303_c',
     'stm32f303k6': 'stm32f303_8',
     'stm32f303r6': 'stm32f303_8',
     'stm32f303rb': 'stm32f303_c',
-    'stm32f303rd': 'stm32f303_e', 
+    'stm32f303rd': 'stm32f303_e',
     'stm32f303vb': 'stm32f303_c',
-    'stm32f303vd': 'stm32f303_e', 
-    'stm32f303zd': 'stm32f303_e', 
+    'stm32f303vd': 'stm32f303_e',
+    'stm32f303zd': 'stm32f303_e',
     'stm32f401cb': 'stm32f401_c',
     'stm32f401cd': 'stm32f401_e',
     'stm32f401rb': 'stm32f401_c',
@@ -436,6 +441,14 @@ MANUAL_TYPES = {
     'stm32l152v8': 'stm32l152_b',
 }
 
+ccmram_re = {
+    'f40[57]..': 64,
+    'f41[57]..': 64,
+    'f42[79]..': 64,
+    'f43[79]..': 64,
+    'f4[67]9..': 64,
+}
+
 def main():
     pkgs = {}
     for pkg in PACKAGES:
@@ -467,7 +480,12 @@ def main():
                 # print(f"    '{mcu.name}': {[x[1] for x in best]},")
                 raise RuntimeError(mcu.name, scores)
             mcu_type = scores[0][1]
-        pkg.mcu_specs.append((mcu.name, mcu_type, mcu.flash_kb, mcu.ram_kb))
+
+        ccmram_kb = 0
+        for k, v in ccmram_re.items():
+            if re.match(k, mcu.name[5:12]):
+                ccmram_kb = v
+        pkg.mcu_specs.append((mcu.name, mcu_type, mcu.flash_kb, mcu.ram_kb, ccmram_kb))
         if mcu.st_package not in cpus:
             cpus[mcu.st_package]= set()
         cpus[mcu.st_package].add(tuple(mcu.cores))
@@ -478,7 +496,7 @@ def main():
     wrap_temp = jenv.get_template('cmsis.wrap')
     meson_options_temp = jenv.get_template('meson.options')
     meson_build_temp = jenv.get_template('meson.build')
-    ld_temp = jenv.get_template('default.ld.in')
+    ld_temp = jenv.get_template('default.ld')
     path = 'out/subprojects'
 
     for pkg in pkgs.values():

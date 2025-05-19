@@ -7,6 +7,22 @@ patch_directory = st-cmsis-f7
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32f722__ = st_cmsis_stm32f722___dep
+st-cmsis-stm32f723__ = st_cmsis_stm32f723___dep
+st-cmsis-stm32f730__ = st_cmsis_stm32f730___dep
+st-cmsis-stm32f732__ = st_cmsis_stm32f732___dep
+st-cmsis-stm32f733__ = st_cmsis_stm32f733___dep
+st-cmsis-stm32f745__ = st_cmsis_stm32f745___dep
+st-cmsis-stm32f746__ = st_cmsis_stm32f746___dep
+st-cmsis-stm32f750__ = st_cmsis_stm32f750___dep
+st-cmsis-stm32f756__ = st_cmsis_stm32f756___dep
+st-cmsis-stm32f765__ = st_cmsis_stm32f765___dep
+st-cmsis-stm32f767__ = st_cmsis_stm32f767___dep
+st-cmsis-stm32f769__ = st_cmsis_stm32f769___dep
+st-cmsis-stm32f777__ = st_cmsis_stm32f777___dep
+st-cmsis-stm32f779__ = st_cmsis_stm32f779___dep
+# mcu type library + linker script
 st-cmsis-stm32f722ic = st_cmsis_stm32f722ic_dep
 st-cmsis-stm32f722ie = st_cmsis_stm32f722ie_dep
 st-cmsis-stm32f722rc = st_cmsis_stm32f722rc_dep

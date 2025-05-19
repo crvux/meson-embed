@@ -10,11 +10,11 @@ root = 'cmsis-device-wb0-1.2.0'
 
 # Per type dependencies with -D compiler flags and startup sources
 types = [
-  'stm32wb0_', 
   'stm32wb05', 
   'stm32wb06', 
   'stm32wb07', 
   'stm32wb09', 
+  'stm32wb0_', 
 ]
 system_src = files(root / 'Source' / 'Templates' / 'system_stm32wb0xx.c')
 foreach type : types
@@ -31,7 +31,7 @@ foreach type : types
     c_args: type_define,
     cpp_args: type_define,
   )
-  set_variable(f'st_cmsis_@type_lower@_dep', declare_dependency(
+  set_variable(f'st_cmsis_@type@_dep', declare_dependency(
     version: meson.project_version(),
     dependencies: [st_cmsis_core],
     include_directories: root / 'Include',
@@ -42,37 +42,21 @@ endforeach
 
 # Per MCU dependencies with default linker script
 mcus = {
-    'stm32wb05kn': ['stm32wb0_', 0, 0],
-    'stm32wb05kz': ['stm32wb0_', 192, 24],
-    'stm32wb05tn': ['stm32wb0_', 0, 0],
-    'stm32wb05tz': ['stm32wb0_', 192, 24],
-    'stm32wb06cc': ['stm32wb0_', 256, 32],
-    'stm32wb06kc': ['stm32wb0_', 256, 32],
-    'stm32wb07cc': ['stm32wb0_', 256, 64],
-    'stm32wb07kc': ['stm32wb0_', 256, 64],
-    'stm32wb09ke': ['stm32wb0_', 512, 64],
-    'stm32wb09te': ['stm32wb0_', 512, 64],
+    'stm32wb05kn': 'stm32wb0_',
+    'stm32wb05kz': 'stm32wb0_',
+    'stm32wb05tn': 'stm32wb0_',
+    'stm32wb05tz': 'stm32wb0_',
+    'stm32wb06cc': 'stm32wb0_',
+    'stm32wb06kc': 'stm32wb0_',
+    'stm32wb07cc': 'stm32wb0_',
+    'stm32wb07kc': 'stm32wb0_',
+    'stm32wb09ke': 'stm32wb0_',
+    'stm32wb09te': 'stm32wb0_',
 }
-foreach mcu, opts : mcus
-  ld_default_script_name = f'@mcu@.ld'
-  configure_file(input : 'default.ld.in',
-    output : ld_default_script_name,
-    configuration : {
-      'flash_size_kb': opts[1],
-      'ram_size_kb': opts[2],
-  })
-  ld_default_script = ['-Xlinker', '--default-script=' + meson.project_build_root() / ld_default_script_name]
-
-  compile_args = []
-  if get_option('use_hal')
-    compile_args += '-DUSE_HAL_DRIVER'
-  endif
-
-  type_lower = opts[0].replace('_', 'x')
+foreach mcu, type : mcus
   set_variable(f'st_cmsis_@mcu@_dep', declare_dependency(
     version: meson.project_version(),
-    dependencies: get_variable(f'st_cmsis_@type_lower@_dep'),
-    compile_args: compile_args,
-    link_args: ld_default_script,
+    dependencies: get_variable(f'st_cmsis_@type@_dep'),
+    link_args: ['-Xlinker', '--default-script=' + files('ld' / mcu + '.ld')[0].full_path()],
   ))
 endforeach

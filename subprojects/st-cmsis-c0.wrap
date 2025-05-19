@@ -7,6 +7,14 @@ patch_directory = st-cmsis-c0
 lead_directory_missing = true
 
 [provide]
+# startup code + mcu type definition
+st-cmsis-stm32c011__ = st_cmsis_stm32c011___dep
+st-cmsis-stm32c031__ = st_cmsis_stm32c031___dep
+st-cmsis-stm32c051__ = st_cmsis_stm32c051___dep
+st-cmsis-stm32c071__ = st_cmsis_stm32c071___dep
+st-cmsis-stm32c091__ = st_cmsis_stm32c091___dep
+st-cmsis-stm32c092__ = st_cmsis_stm32c092___dep
+# mcu type library + linker script
 st-cmsis-stm32c011d6 = st_cmsis_stm32c011d6_dep
 st-cmsis-stm32c011f4 = st_cmsis_stm32c011f4_dep
 st-cmsis-stm32c011f6 = st_cmsis_stm32c011f6_dep
@@ -22,6 +30,7 @@ st-cmsis-stm32c031k4 = st_cmsis_stm32c031k4_dep
 st-cmsis-stm32c031k6 = st_cmsis_stm32c031k6_dep
 st-cmsis-stm32c051c6 = st_cmsis_stm32c051c6_dep
 st-cmsis-stm32c051c8 = st_cmsis_stm32c051c8_dep
+st-cmsis-stm32c051d8 = st_cmsis_stm32c051d8_dep
 st-cmsis-stm32c051f6 = st_cmsis_stm32c051f6_dep
 st-cmsis-stm32c051f8 = st_cmsis_stm32c051f8_dep
 st-cmsis-stm32c051g6 = st_cmsis_stm32c051g6_dep
@@ -50,6 +59,7 @@ st-cmsis-stm32c091rb = st_cmsis_stm32c091rb_dep
 st-cmsis-stm32c091rc = st_cmsis_stm32c091rc_dep
 st-cmsis-stm32c092cb = st_cmsis_stm32c092cb_dep
 st-cmsis-stm32c092cc = st_cmsis_stm32c092cc_dep
+st-cmsis-stm32c092ec = st_cmsis_stm32c092ec_dep
 st-cmsis-stm32c092fb = st_cmsis_stm32c092fb_dep
 st-cmsis-stm32c092fc = st_cmsis_stm32c092fc_dep
 st-cmsis-stm32c092gb = st_cmsis_stm32c092gb_dep
@@ -58,5 +68,3 @@ st-cmsis-stm32c092kb = st_cmsis_stm32c092kb_dep
 st-cmsis-stm32c092kc = st_cmsis_stm32c092kc_dep
 st-cmsis-stm32c092rb = st_cmsis_stm32c092rb_dep
 st-cmsis-stm32c092rc = st_cmsis_stm32c092rc_dep
-st-cmsis-stm32c051d8 = st_cmsis_stm32c051d8_dep
-st-cmsis-stm32c092ec = st_cmsis_stm32c092ec_dep
