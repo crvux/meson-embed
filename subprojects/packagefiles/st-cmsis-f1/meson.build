@@ -8,48 +8,6 @@ project('st-cmsis-f1', 'c', 'cpp',
 st_cmsis_core = dependency('st-cmsis-core', version: '5.9.0')
 root = 'cmsis-device-f1-4.3.5'
 
-# Per type dependencies with -D compiler flags and startup sources
-types = [
-  'stm32f100_b', 
-  'stm32f100_e', 
-  'stm32f101_6', 
-  'stm32f101_b', 
-  'stm32f101_e', 
-  'stm32f101_g', 
-  'stm32f102_6', 
-  'stm32f102_b', 
-  'stm32f103_6', 
-  'stm32f103_b', 
-  'stm32f103_e', 
-  'stm32f103_g', 
-  'stm32f105_c', 
-  'stm32f107_c', 
-]
-system_src = files(root / 'Source' / 'Templates' / 'system_stm32f1xx.c')
-foreach type : types
-  type_lower = type.replace('_', 'x')
-  startup_src = files(root / 'Source' / 'Templates' / 'gcc' / f'startup_@type_lower@.s')
-  type_define = '-D' + type.to_upper().replace('_', 'x')
-  pkg_define = '-DSTM32F1'  # This can be used with universal stm32 header 
-
-  lib = static_library(
-    f'st_cmsis_@type_lower@', system_src, startup_src,
-    build_by_default: false,
-    dependencies: [st_cmsis_core],
-    include_directories: root / 'Include',
-    c_args: type_define,
-    cpp_args: type_define,
-  )
-  set_variable(f'st_cmsis_@type@_dep', declare_dependency(
-    version: meson.project_version(),
-    dependencies: [st_cmsis_core],
-    include_directories: root / 'Include',
-    compile_args: [type_define, pkg_define],
-    link_with: lib,
-  ))
-endforeach
-
-# Per MCU dependencies with default linker script
 mcus = {
     'stm32f100c4': 'stm32f100_b',
     'stm32f100c6': 'stm32f100_b',
@@ -147,10 +105,37 @@ mcus = {
     'stm32f107vb': 'stm32f107_c',
     'stm32f107vc': 'stm32f107_c',
 }
-foreach mcu, type : mcus
-  set_variable(f'st_cmsis_@mcu@_dep', declare_dependency(
-    version: meson.project_version(),
-    dependencies: get_variable(f'st_cmsis_@type@_dep'),
-    link_args: ['-Xlinker', '--default-script=' + files('ld' / mcu + '.ld')[0].full_path()],
-  ))
-endforeach
+mcu = meson.get_external_property('mcu')
+if mcu not in mcus
+  mcus_keys = mcus.keys()
+  error(f'Please specify external property \'mcu\' with one of this values: @mcus_keys@')
+endif
+type = mcus[mcu]
+
+type_lower = type.replace('_', 'x')
+system_src = files(root / 'Source' / 'Templates' / 'system_stm32f1xx.c')
+startup_src = files(root / 'Source' / 'Templates' / 'gcc' / f'startup_@type_lower@.s')
+type_define = '-D' + type.to_upper().replace('_', 'x')
+pkg_define = '-DSTM32F1'  # This can be used with universal stm32 header 
+
+lib = static_library(
+  f'st_cmsis_@type_lower@', system_src, startup_src,
+  build_by_default: false,
+  dependencies: [st_cmsis_core],
+  include_directories: root / 'Include',
+  c_args: type_define,
+  cpp_args: type_define,
+)
+
+st_cmsis_f1_type_dep = declare_dependency(
+  version: meson.project_version(),
+  dependencies: [st_cmsis_core],
+  include_directories: root / 'Include',
+  compile_args: [type_define, pkg_define],
+  link_with: lib,
+)
+st_cmsis_f1_dep = declare_dependency(
+  version: meson.project_version(),
+  dependencies: st_cmsis_f1_type_dep,
+  link_args: ['-Xlinker', '--default-script=' + files('ld' / mcu + '.ld')[0].full_path()],
+)

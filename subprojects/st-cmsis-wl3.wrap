@@ -8,11 +8,6 @@ lead_directory_missing = true
 
 [provide]
 # startup code + mcu type definition
-st-cmsis-stm32wl3__ = st_cmsis_stm32wl3___dep
+st-cmsis-wl3-type = st_cmsis_wl3_type_dep
 # mcu type library + linker script
-st-cmsis-stm32wl33c8 = st_cmsis_stm32wl33c8_dep
-st-cmsis-stm32wl33cb = st_cmsis_stm32wl33cb_dep
-st-cmsis-stm32wl33cc = st_cmsis_stm32wl33cc_dep
-st-cmsis-stm32wl33k8 = st_cmsis_stm32wl33k8_dep
-st-cmsis-stm32wl33kb = st_cmsis_stm32wl33kb_dep
-st-cmsis-stm32wl33kc = st_cmsis_stm32wl33kc_dep
+st-cmsis-wl3 = st_cmsis_wl3_dep

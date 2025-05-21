@@ -8,30 +8,6 @@ lead_directory_missing = true
 
 [provide]
 # startup code + mcu type definition
-st-cmsis-stm32wb10__ = st_cmsis_stm32wb10___dep
-st-cmsis-stm32wb15__ = st_cmsis_stm32wb15___dep
-st-cmsis-stm32wb1m__ = st_cmsis_stm32wb1m___dep
-st-cmsis-stm32wb30__ = st_cmsis_stm32wb30___dep
-st-cmsis-stm32wb35__ = st_cmsis_stm32wb35___dep
-st-cmsis-stm32wb50__ = st_cmsis_stm32wb50___dep
-st-cmsis-stm32wb55__ = st_cmsis_stm32wb55___dep
-st-cmsis-stm32wb5m__ = st_cmsis_stm32wb5m___dep
+st-cmsis-wb-type = st_cmsis_wb_type_dep
 # mcu type library + linker script
-st-cmsis-stm32wb10cc = st_cmsis_stm32wb10cc_dep
-st-cmsis-stm32wb15cc = st_cmsis_stm32wb15cc_dep
-st-cmsis-stm32wb1mmc = st_cmsis_stm32wb1mmc_dep
-st-cmsis-stm32wb30ce = st_cmsis_stm32wb30ce_dep
-st-cmsis-stm32wb35cc = st_cmsis_stm32wb35cc_dep
-st-cmsis-stm32wb35ce = st_cmsis_stm32wb35ce_dep
-st-cmsis-stm32wb50cg = st_cmsis_stm32wb50cg_dep
-st-cmsis-stm32wb55cc = st_cmsis_stm32wb55cc_dep
-st-cmsis-stm32wb55ce = st_cmsis_stm32wb55ce_dep
-st-cmsis-stm32wb55cg = st_cmsis_stm32wb55cg_dep
-st-cmsis-stm32wb55rc = st_cmsis_stm32wb55rc_dep
-st-cmsis-stm32wb55re = st_cmsis_stm32wb55re_dep
-st-cmsis-stm32wb55rg = st_cmsis_stm32wb55rg_dep
-st-cmsis-stm32wb55vc = st_cmsis_stm32wb55vc_dep
-st-cmsis-stm32wb55ve = st_cmsis_stm32wb55ve_dep
-st-cmsis-stm32wb55vg = st_cmsis_stm32wb55vg_dep
-st-cmsis-stm32wb55vy = st_cmsis_stm32wb55vy_dep
-st-cmsis-stm32wb5mmg = st_cmsis_stm32wb5mmg_dep
+st-cmsis-wb = st_cmsis_wb_dep
