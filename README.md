@@ -6,9 +6,9 @@ _This project is in its early stages, any feedback would be helpful.  Contributi
 
 ## Goals
 
-- [ ] stm32 cross files _WIP_
-- [ ] [st-cmsis per mcu](https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer?tab=readme-ov-file#stm32cube-cmsis) _WIP_
-- [ ] [st-cmsis-core](https://github.com/STMicroelectronics/cmsis-core) _WIP_
+- [x] stm32 single-core nonsecure cross files
+- [ ] [st-cmsis](https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer?tab=readme-ov-file#stm32cube-cmsis) mcu with simple project structre (c0 f0 f1 f2 f3 f4 f7 g0 g4 l0 l1 l4 u0 u3 wb wb0 wba wl3) _WIP_
+- [x] [st-cmsis-core](https://github.com/STMicroelectronics/cmsis-core) core headers
 - [ ] [st-hal](https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer?tab=readme-ov-file#stm32cube-hal-drivers)
 - [ ] [libopencm3](https://github.com/libopencm3/libopencm3)
 - [ ] [tinyusb](https://github.com/hathach/tinyusb)
@@ -17,6 +17,8 @@ _This project is in its early stages, any feedback would be helpful.  Contributi
 - [ ] [scpi](https://github.com/j123b567/scpi-parser)
 - [ ] [eyalroz/printf](https://github.com/eyalroz/printf)
 - [ ] [stm32duino](https://github.com/stm32duino/Arduino_Core_STM32)
+- [ ] stm32 multi-core and|or secure cross files
+- [ ] [st-cmsis](https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer?tab=readme-ov-file#stm32cube-cmsis) mcu with complex project structre (h5 h7 h7rs l5 n6 u5 wl)
 
 ## Scripts for porting
 
